@@ -1,0 +1,43 @@
+{% extends 'main.html' %} {% block content %} {% load static %}
+{% include 'navbar.html' %}
+<div class="article-comment">
+    <div class="article-container">
+        <h1>{{ article.title }}</h1>
+        <img src="{{ article.image.url }}" alt="image">
+        <p>{{ article.summary }}</p>
+        <p>{{ article.body }}</p>
+        <small>{{ article.created|timesince }} ago</small>
+        {% if request.user.is_staff %}
+        <a href="{% url 'delete-article' article.url%}">Delete</a> <a href="#">Edit</a>
+        {% endif %}
+    </div>
+    <div class="comment-container">
+        <h1>Comments</h1>
+        <div class="comments">
+            {% for comment in comments %}
+
+            <div class="comment">
+                <small>{{comment.user.first_name}} {{comment.created|timesince}} ago</small>
+                <p>{{ comment.body }}</p>
+                <small><a href="{% url 'delete-comment' comment.id %}">Delete</a></small>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="create-comment">
+                <textarea type="text" rows="3" name="body" placeholder="Write comment..."></textarea>
+                <button type="submit">ENTER</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+
+{% include 'footer.html' %}
+</div>
+
+{% endblock content %}

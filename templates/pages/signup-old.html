@@ -1,0 +1,21 @@
+{% extends 'main.html' %} {% block content %}
+<div class="container">
+    <div class="form">
+        <p>Signup</p>
+        <form action="" method="POST">
+            {% csrf_token %} 
+			{% for field in form %} 
+			{{ field.errors }}
+			{{ field }} 
+			{% endfor %}
+			<input type="submit" class="button" value="Signup">
+        </form>
+        <div class="signup">
+            <span class="signup">
+                Already have an account?
+                <a href="{% url 'login' %}">Login</a>
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock content %}

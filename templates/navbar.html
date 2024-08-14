@@ -1,0 +1,71 @@
+{% load static %}
+
+<nav>
+    <div class="logo">
+        <img src="{% static 'img/logo.png' %}" alt="logo" />
+        <h1>SHODMON</h1>
+    </div>
+    <ul>
+        {% if request.user.is_staff %}
+        <li>
+            <a href="{% url 'create-article' %}">Create-article</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'article' %}">Articles</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li>
+            <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li>
+            <a href="{% url 'home' %}">Settings</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+            <a href="{% url 'signup' %}">SignUp</a>
+        </li>
+        {% endif %}
+    </ul>
+    <div class="hamburger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</nav>
+<div class="menubar">
+    <ul>
+        {% if request.user.is_staff %}
+        <li>
+            <a href="{% url 'create-article' %}">Create-article</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'article' %}">Articles</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li>
+            <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li>
+            <a href="{% url 'home' %}">Settings</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}">SignUp</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

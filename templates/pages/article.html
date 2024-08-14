@@ -1,0 +1,16 @@
+{% extends 'main.html' %} {% block content %} {% load static %} 
+{% include 'navbar.html' %}
+    <main>
+        {% for article in articles %}
+        <div>
+            <h3 class="article-home-name"><a href="{% url 'article-details' article.url %}">{{article.title}}</a></h3>
+            <p class="article-home-summary">{{article.summary}}</p>
+            <img src="{{ article.image.url }}" alt="image" class="article-home-image">
+            <p>{{article.body}}</p>
+        </div>
+        {% endfor %}
+    </main>
+
+    {% include 'footer.html' %}
+</div>
+{% endblock content %}

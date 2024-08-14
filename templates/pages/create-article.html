@@ -1,0 +1,32 @@
+{% extends 'main.html' %} {% block content %}
+{% include 'navbar.html' %}
+
+<div class="form-container">
+    <div class="wrapper">
+        <h1>Create article</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="text" name="title" placeholder="Title of article" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="summary" placeholder="Summary of article">
+            </div>
+            <div class="input-text">
+                <textarea name="body" placeholder="Body of article" rows="10"></textarea>
+            </div>
+            <div class="input-box">
+                <input type="text" name="url" placeholder="Summary of article">
+            </div>
+            <div class="input-file">
+                <label for="uploadfile"><i class='bx bx-upload'></i>Upload file</label>
+                <input type="file" name="image" accept="image/*" id="uploadfile">
+            </div>
+            <button type="submit" class="btn">Create</button>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+</div>
+{% endblock content %}

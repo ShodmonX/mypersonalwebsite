@@ -1,0 +1,50 @@
+{% extends 'main.html' %} {% block content %} {% load static %} 
+{% include 'navbar.html' %}
+
+<div class="container">
+    <section class="section">
+        <h1>SHODMON X</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, 
+            adipisicing elit. Earum dolorum natus, 
+            voluptate officiis consectetur quod magni aut saepe repudiandae quasi est, 
+            ad tempore distinctio. Quidem vero nemo quo, sint sed distinctio totam? 
+            Veniam cum esse explicabo expedita asperiores molestiae iure rem maiores. 
+            Recusandae enim magnam ullam, deserunt alias illo excepturi ab eum eius, 
+            commodi dolorum molestias earum esse adipisci. 
+            Eius sapiente quisquam tenetur quo perspiciatis incidunt fugiat! 
+            Consequatur modi excepturi dolores commodi mollitia atque praesentium? 
+            Nesciunt veritatis ducimus ullam laboriosam quod quam beatae nemo, 
+            aliquid repellendus distinctio quae nisi voluptas animi sapiente volupttelegramatum ipsa quasi aspernatur, 
+            pariatur, magnam officia. Pariatur!
+        </p>
+        <ul>
+            <li><a href="#"><i class='bx bxl-telegram'></i></a></li>
+            <li><a href="#"><i class='bx bxl-instagram' ></i></a></li>
+            <li><a href="#"><i class='bx bxl-facebook' ></i></a></li>
+            <li><a href="#"><i class='bx bxl-twitter' ></i></a></li>
+        
+        </ul>
+    </section>
+    
+    <aside>
+        {% for article in articles %}
+        <div>
+            <h3><a href="{% url 'article-details' article.url %}">{{article.title}}</a></h3>
+            <img src="{{ article.image.url }}" alt="image">
+            <p>{{article.summary}}</p>
+        </div>
+        {% endfor %}
+        <a href="#" class="asidea">More</a>
+    </aside>
+    <article>
+        {% for article in articles %}
+        <div>
+            <img src="{{ article.image.url }}" alt="image">
+            <p><a href="#">{{article.title}}</a></p>
+        </div>
+        {% endfor %}
+    </article>
+    {% include 'footer.html' %}
+</div>
+
+{% endblock content %}
